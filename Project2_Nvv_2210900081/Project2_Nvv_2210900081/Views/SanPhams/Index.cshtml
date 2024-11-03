@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Project2_Nvv_2210900081.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<style>
+    /* Phong cách cho bảng */
+    .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+        /* Phong cách cho tiêu đề bảng */
+        .product-table th {
+            background-color: #1E3A8A; /* Màu xanh đậm */
+            color: white;
+            padding: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 1px solid #dddddd;
+        }
+
+        /* Phong cách cho các ô dữ liệu trong bảng */
+        .product-table td {
+            padding: 12px;
+            border: 1px solid #dddddd;
+        }
+
+        /* Phong cách cho hình ảnh */
+        .product-table img {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* Hiệu ứng hover khi di chuột qua hàng */
+        .product-table tr:hover {
+            background-color: #f3f4f6; /* Màu nền xám nhạt */
+        }
+
+        /* Phong cách cho các liên kết trong bảng (Edit, Details, Delete) */
+        .product-table a {
+            color: #8B5CF6; /* Màu tím */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+            .product-table a:hover {
+                color: #6D28D9; /* Màu tím đậm hơn */
+                text-decoration: underline;
+            }
+
+    /* Phong cách cho nút "Create New" */
+    .create-new-link {
+        background-color: #F59E0B; /* Màu vàng */
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+        .create-new-link:hover {
+            background-color: #D97706; /* Màu vàng đậm hơn */
+            color: white;
+        }
+
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mo_ta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hinh_anh)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mo_ta)
+            </td>
+            <td>
+                <img src="@Url.Content(item.hinh_anh)" alt="@item.ten" style="width: 100px; height: auto;" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Project2_Nvv_2210900081.Models.KhachHang>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<style>
+    /* Phong cách cho bảng Khách Hàng */
+    .khach-hang-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+        /* Phong cách cho tiêu đề bảng */
+        .khach-hang-table th {
+            background-color: #6B46C1; /* Màu tím đậm */
+            color: white;
+            padding: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 1px solid #dddddd;
+        }
+
+        /* Phong cách cho các ô dữ liệu trong bảng */
+        .khach-hang-table td {
+            padding: 12px;
+            border: 1px solid #dddddd;
+        }
+
+        /* Phong cách cho các hàng dữ liệu */
+        .khach-hang-table tr:nth-child(even) {
+            background-color: #f9f9f9; /* Màu xám nhạt cho hàng chẵn */
+        }
+
+        .khach-hang-table tr:hover {
+            background-color: #f0e7ff; /* Màu tím nhạt khi hover */
+        }
+
+        /* Phong cách cho các liên kết trong bảng (Edit, Details, Delete) */
+        .khach-hang-table a {
+            color: #3182CE; /* Màu xanh dương tươi sáng */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+            .khach-hang-table a:hover {
+                color: #2C5282; /* Màu xanh dương đậm khi hover */
+                text-decoration: underline;
+            }
+
+    /* Phong cách cho nút "Create New" */
+    .create-new-link {
+        background-color: #ECC94B; /* Màu vàng nhạt */
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+        .create-new-link:hover {
+            background-color: #D69E2E; /* Màu vàng đậm hơn khi hover */
+            color: white;
+        }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sdt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dia_chi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sdt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dia_chi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

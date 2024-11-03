@@ -1,0 +1,42 @@
+﻿@model Project2_Nvv_2210900081.Models.DonHang
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DonHang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ngay_dat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngay_dat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tong_tien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tong_tien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.ten)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

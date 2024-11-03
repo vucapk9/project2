@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Project2_Nvv_2210900081.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<style>
+    /* Phong cách cho bảng Admin */
+    .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+        /* Phong cách cho tiêu đề bảng */
+        .admin-table th {
+            background-color: #1E3A8A; /* Màu xanh đậm */
+            color: white;
+            padding: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 1px solid #dddddd;
+        }
+
+        /* Phong cách cho các ô dữ liệu trong bảng */
+        .admin-table td {
+            padding: 12px;
+            border: 1px solid #dddddd;
+        }
+
+        /* Phong cách cho các hàng dữ liệu */
+        .admin-table tr:nth-child(even) {
+            background-color: #f9f9f9; /* Màu xám nhạt cho hàng chẵn */
+        }
+
+        .admin-table tr:hover {
+            background-color: #e6f7ff; /* Màu xanh nhạt khi hover */
+        }
+
+        /* Phong cách cho các liên kết trong bảng (Edit, Details, Delete) */
+        .admin-table a {
+            color: #FF5722; /* Màu đỏ cam */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+            .admin-table a:hover {
+                color: #E64A19; /* Màu đỏ cam đậm hơn khi hover */
+                text-decoration: underline;
+            }
+
+    /* Phong cách cho nút "Create New" */
+    .create-new-link {
+        background-color: #F59E0B; /* Màu vàng */
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+        .create-new-link:hover {
+            background-color: #D97706; /* Màu vàng đậm hơn khi hover */
+            color: white;
+        }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PasswordHash)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

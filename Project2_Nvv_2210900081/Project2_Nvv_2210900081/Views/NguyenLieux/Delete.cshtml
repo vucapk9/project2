@@ -1,0 +1,48 @@
+﻿@model Project2_Nvv_2210900081.Models.NguyenLieu
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NguyenLieu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.so_luong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.so_luong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.don_vi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.don_vi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

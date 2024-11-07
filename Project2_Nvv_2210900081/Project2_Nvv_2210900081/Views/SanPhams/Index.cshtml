@@ -107,9 +107,7 @@
                 <img src="@Url.Content(item.hinh_anh)" alt="@item.ten" style="width: 100px; height: auto;" />
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                <a href="@Url.Action("AddToCart", "Cart", new { id = item.id })" class="btn btn-success">Mua hàng</a>
             </td>
         </tr>
     }

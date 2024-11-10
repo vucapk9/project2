@@ -1,22 +1,26 @@
 ﻿@model Project2_Nvv_2210900081.Models.DonHang
 
 @{
-    ViewBag.Title = "Edit";
-    List<Project2_Nvv_2210900081.ModelView.DH_CT> chiTiet = ViewBag.donHangChiTiet as List<Project2_Nvv_2210900081.ModelView.DH_CT>;
+    ViewBag.Title = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>DonHang</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.id_khach_hang, "id_khach_hang", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,34 +45,15 @@
                 @Html.ValidationMessageFor(model => model.tong_tien, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">Trị giá háo đơn</label>
-            <div class="col-md-10"></div>
-            <span>@Model.tong_tien</span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">Trang thái hóa đơn:</label>
-        <div class="col-md-10"></div>
-        <select class="form-control">
-            <option value="0">Chờ xử lý</option>
-            <option value="0">Đang xử lý</option>
-            <option value="0">Đang hoàn thành</option>
-        </select>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Cập nhật đơn hàng" class="btn btn-default" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
         </div>
     </div>
-    
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

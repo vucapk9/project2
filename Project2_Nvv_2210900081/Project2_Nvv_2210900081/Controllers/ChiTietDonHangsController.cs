@@ -114,8 +114,8 @@ namespace Project2_Nvv_2210900081.Controllers
         }
 
         // POST: ChiTietDonHangs/Delete/5
-        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
             ChiTietDonHang chiTietDonHang = db.ChiTietDonHangs.Find(id);

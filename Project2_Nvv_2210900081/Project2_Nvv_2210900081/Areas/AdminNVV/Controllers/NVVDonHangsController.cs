@@ -9,20 +9,20 @@ using System.Web.Mvc;
 using Project2_Nvv_2210900081.Models;
 using Project2_Nvv_2210900081.ModelView;
 
-namespace Project2_Nvv_2210900081.Controllers
+namespace Project2_Nvv_2210900081.Areas.AdminNVV.Controllers
 {
-    public class DonHangsController : Controller
+    public class NVVDonHangsController : Controller
     {
         private NguyenVanVuK22CNT2Entities db = new NguyenVanVuK22CNT2Entities();
 
-        // GET: DonHangs
+        // GET: AdminNVV/NVVDonHangs
         public ActionResult Index()
         {
             var donHangs = db.DonHangs.Include(d => d.KhachHang);
             return View(donHangs.ToList());
         }
 
-        // GET: DonHangs/Details/5
+        // GET: AdminNVV/NVVDonHangs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,14 +37,14 @@ namespace Project2_Nvv_2210900081.Controllers
             return View(donHang);
         }
 
-        // GET: DonHangs/Create
+        // GET: AdminNVV/NVVDonHangs/Create
         public ActionResult Create()
         {
             ViewBag.id_khach_hang = new SelectList(db.KhachHangs, "id", "ten");
             return View();
         }
 
-        // POST: DonHangs/Create
+        // POST: AdminNVV/NVVDonHangs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -62,7 +62,7 @@ namespace Project2_Nvv_2210900081.Controllers
             return View(donHang);
         }
 
-        // GET: DonHangs/Edit/5
+        // GET: AdminNVV/NVVDonHangs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,15 +84,17 @@ namespace Project2_Nvv_2210900081.Controllers
                                      Id = ct.id,
                                      Name = sp.ten,
                                      Image = sp.hinh_anh,
-
+                                     
                                      Qty = ct.so_luong,
-
+                                     
                                  };
-            ViewBag.DonHangChiTiet = DonHangChiTiet;
+            ViewBag.DonHangChiTiet= DonHangChiTiet;
+           
             return View(donHang);
         }
 
-        // POST: DonHangs/Edit/5
+
+        // POST: AdminNVV/NVVDonHangs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -101,10 +103,9 @@ namespace Project2_Nvv_2210900081.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 var DonHang = db.DonHangs.FirstOrDefaultAsync(x => x.id == donHang.id);
-                if (DonHang == null)
-                    db.Entry(donHang).State = EntityState.Modified;
+             if (DonHang == null)
+                db.Entry(donHang).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -112,7 +113,7 @@ namespace Project2_Nvv_2210900081.Controllers
             return View(donHang);
         }
 
-        // GET: DonHangs/Delete/5
+        // GET: AdminNVV/NVVDonHangs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -127,7 +128,7 @@ namespace Project2_Nvv_2210900081.Controllers
             return View(donHang);
         }
 
-        // POST: DonHangs/Delete/5
+        // POST: AdminNVV/NVVDonHangs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

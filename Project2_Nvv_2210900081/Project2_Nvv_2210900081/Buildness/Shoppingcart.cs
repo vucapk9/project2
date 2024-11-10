@@ -14,7 +14,7 @@ namespace Project2_Nvv_2210900081.Buildness
         public void AddToCart( CartItem item)
         {
             var existingitem = Items.FirstOrDefault(i => i.Id == item.Id);
-            if (existingitem == null)
+            if (existingitem != null)
             {
                 existingitem.Qty += item.Qty;
             }

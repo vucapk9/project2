@@ -11,6 +11,7 @@ namespace Project2_Nvv_2210900081.Controllers
 {
     public class CartController : Controller
     {
+        private NguyenVanVuK22CNT2Entities db = new NguyenVanVuK22CNT2Entities();
         private const string CartSessionKey = "Shoppingcart";
         // Lấy giỏ hàng từ session
         private Shoppingcart GetCart()
@@ -24,7 +25,7 @@ namespace Project2_Nvv_2210900081.Controllers
             return cart;
         }
         // Thêm sản phẩm vào giỏ hàng
-        public ActionResult AddToCart(int Id, string name, string image, float price, int qty)
+        public ActionResult AddToCart(int Id, string name, string image, float price, int qty=1)
         {
             var cart = GetCart();
             var item = new CartItem
@@ -62,29 +63,30 @@ namespace Project2_Nvv_2210900081.Controllers
         }
         public ActionResult ThanhToan(FormCollection form)
         {
-            //lấy thông tin khách hàng
-            var ten_nguoi_nhan = form["Ten_Nguoi_nhan"];
+            // Lấy thông tin khách hàng từ form
+            var ten_nguoi_nhan = form["KhachHang"];
             var dia_chi_nguoi_nhan = form["Dia_Chi_Nhan"];
             var dien_thoai_nguoi_nhan = form["Dien_Thoai_Nhan"];
 
-            //tạo đơn hàng 
+            // Tạo đối tượng đơn hàng mới
             DonHang don_Hang = new DonHang();
 
             // Lấy ngày giờ hiện tại
             DateTime dt = DateTime.Now;
 
-            // Cập nhật các thông tin của đơn hàng
-            don_Hang.MaKH = "DH" + dt.ToString("yyyyMMddHHmmss");  // Tạo mã đơn hàng duy nhất
-            don_Hang.Ten_Nguoi_Nhan = ten_nguoi_nhan;
-            don_Hang.Dia_Chi_Nhan = dia_chi_nguoi_nhan;
-            don_Hang.Dien_Thoai_Nhan = dien_thoai_nguoi_nhan;
-            don_Hang.Ngay_dat = dt;
-            don_Hang.Trang_thai = 0;
-            db.DonHang.Add(don_Hang);
-            db.SaveChange();
+            // Cập nhật thông tin đơn hàng
+            // don_Hang.m = "DH" + dt.ToString("yyyyMMddHHmmss"); // Mã đơn hàng duy nhất dựa trên thời gian
+            //don_Hang.KhachHang = ten_nguoi_nhan;
+            //don_Hang. = dia_chi_nguoi_nhan;
+            //don_Hang.DienThoaiNhan = dien_thoai_nguoi_nhan;
+            //don_Hang.NgayDat = dt;
+            //don_Hang.TrangThai = 0;
+            don_Hang.ngay_dat = dt;
+            db.DonHangs.Add(don_Hang);
+            db.SaveChanges();
 
             //lấy mã đơn hàng mới nhất
-            int maxID_DH = db.DonHang.Max(XmlSiteMapProvider => XmlSiteMapProvider.ID);
+            int maxID_DH = db.DonHangs.Max(x => x.id);
             var cart = GetCart();
             foreach ( CartItem item in cart.Items )
             {

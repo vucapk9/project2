@@ -30,7 +30,7 @@
             <td>@item.Total.ToString("C")</td>
             <td>
                 <a href="javascript:vid" onclick="UpdateCartItem()">Cập nhật</a>
-                @Html.ActionLink("Xóa", "RemoveFromCart", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                @Html.ActionLink("Xóa", "RemoveFormCart", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
             </td>
         </tr>
     }

@@ -78,6 +78,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ten)
         </th>
         <th>
@@ -95,6 +98,9 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.ten)
             </td>
             <td>
@@ -107,7 +113,7 @@
                 <img src="@Url.Content(item.hinh_anh)" alt="@item.ten" style="width: 100px; height: auto;" />
             </td>
             <td>
-                <a href="@Url.Action("AddToCart", "Cart", new { id = item.id })" class="btn btn-success">Mua hàng</a>
+                <a href="/Cart/AddToCart?id=@item.id&name=@item.ten&image=@item.hinh_anh&price=@item.gia" class="btn btn-success">Mua hàng</a>
             </td>
         </tr>
     }

@@ -11,6 +11,8 @@ namespace Project2_Nvv_2210900081.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
+
     
     public partial class DonHang
     {
